@@ -1,7 +1,7 @@
 {
   "id": "penllawen-totem-zone-grids",
   "title": "Totem Zone Grids",
-  "version": "0.0.1",
+  "version": "#{VERSION}#",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
@@ -16,5 +16,10 @@
       "name": "English",
       "path": "lang/en.json"
     }
-  ]
+  ],
+  "url": "#{URL}#",
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#",
+  "license": "LICENSE",
+  "readme": "README.md",
 }
