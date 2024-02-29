@@ -18,18 +18,26 @@ export class TotemSceneControlButtons {
         log("In TotemSceneControlButtons.getSceneControlButtonsHook");
 
         const tile = sceneControlButtons.find((a) => a.name === 'tiles');
-        tile.tools.push({
-            name: 'clear-totem-zones',
-            title: 'Clear TOTeM zones',
-            icon: 'fa-solid fa-border-none',
-            onClick: () => TotemSceneControlButtons.removeTotemZones(canvas.scene),
-        });
 
         tile.tools.push({
             name: 'control-totem-zones',
             title: 'Toggle colours of TOTeM zones',
             icon: 'fa-solid fa-border-none',
             onClick: () => TotemSceneControlButtons.toggleControlTool(canvas.scene),
+        });
+
+        tile.tools.push({
+            name: 'draw-totem-zones',
+            title: 'Draw TOTeM zones',
+            icon: 'fa-regular fa-square-plus',
+            onClick: () => TotemSceneControlButtons.drawTotemZones(canvas.scene),
+        });
+
+        tile.tools.push({
+            name: 'clear-totem-zones',
+            title: 'Clear TOTeM zones',
+            icon: 'fa-solid fa-trash',
+            onClick: () => TotemSceneControlButtons.removeTotemZones(canvas.scene),
         });
     }
 
@@ -60,22 +68,23 @@ export class TotemSceneControlButtons {
             TotemSceneControlButtons.disableTool();
         }
 
-        // Some HTML fiddling for button swapouts
-        const clearButton = html.find("li[data-tool='clear-totem-zones']");
-        clearButton.children().remove();
-        clearButton.addClass('fa-stack');
-        // clearButton.addClass('fa-sm');
 
+        // This is an attempt to merge two FA icons together, but it just looks ugly;
+        // shelving this for now.
+        //
         // NB: If Foundry ever supports Font Awesome SVG+JS in the future, then
         // `data-fa-transform="shrink-8"` might be an easier way to achieve this
-
-        clearButton.append(
-            // '<span className="fa-stack fa-2x">' +
-            '<i class="fa-solid fa-border-none fa-stack-2x"></i>' +
-            '<i class="fa-solid fa-trash fa-stack-1x" ></i>'
-            // + '</span>'
-        );
-        // clearButton.addChild('<i class="fa-solid fa-trash"></i>');
+        //
+        // const clearButton = html.find("li[data-tool='clear-totem-zones']");
+        // clearButton.children().remove();
+        // clearButton.addClass('fa-stack');
+        //
+        // clearButton.append(
+        //     // '<span className="fa-stack fa-2x">' +
+        //     '<i class="fa-solid fa-border-none fa-stack-1x"></i>' +
+        //     '<i class="fa-solid fa-trash fa-stack-0.5x" ></i>'
+        //     // + '</span>'
+        // );
 
 
 
@@ -93,6 +102,14 @@ export class TotemSceneControlButtons {
         log("In TotemSceneControlButtons.removeTotemZones");
         TotemZones.clearGrid();
     }
+
+
+    static drawTotemZones(scene) {
+        log("In TotemSceneControlButtons.drawTotemZones");
+        // TotemZones.clearGrid(); // should I clear before drawing?
+        TotemZones.drawGrid();
+    }
+
 
     static toggleControlTool(scene) {
         log("In TotemSceneControlButtons.toggleControlTool");

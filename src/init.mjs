@@ -26,8 +26,8 @@ Hooks.on("ready", () => {
 Hooks.on("renderSceneConfig", (...args) =>
     TotemSceneSettings.renderSceneConfigHook(...args));
 
-Hooks.on("closeSceneConfig", (...args) =>
-    TotemSceneSettings.closeSceneConfigHook(...args));
+// Hooks.on("closeSceneConfig", (...args) =>
+//     TotemSceneSettings.closeSceneConfigHook(...args));
 
 Hooks.on('getSceneControlButtons', TotemSceneControlButtons.getSceneControlButtonsHook);
 Hooks.on('deactivateTilesLayer', TotemSceneControlButtons.onDeactivateTilesLayerHook);
