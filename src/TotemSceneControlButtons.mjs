@@ -144,8 +144,6 @@ export class TotemSceneControlButtons {
      * @param {object} context
      */
     static onRefreshTileHook(tile, context) {
-        log("In TotemSceneControlButtons.onRefreshTileHook");
-
         if (tile.document.getFlag(CONSTANTS.moduleName, "isTotemTile")) {
             tile.on("click", clickEvent => {
                 log("tile clicked", clickEvent);
