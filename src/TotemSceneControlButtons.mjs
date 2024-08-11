@@ -144,18 +144,21 @@ export class TotemSceneControlButtons {
      * @param {object} context
      */
     static onRefreshTileHook(tile, context) {
+        log('onRefreshTileHook called', tile, context);
+
+        // TODO: this is generating multiple dupe events
+        // to fix: maybe this?
+        // "using libwrapper on Tile.prototype._onClickLeft?"
+        // https://discord.com/channels/170995199584108546/722559135371231352/1272283679732928553
+
         if (tile.document.getFlag(CONSTANTS.moduleName, "isTotemTile")) {
             tile.on("click", clickEvent => {
-                log("tile clicked", clickEvent);
                 const tile = clickEvent.currentTarget;
-
                 if (TotemSceneControlButtons.#toolIsOn && TotemZones.tileIsManaged(tile)) {
-                    log("detected TotemTile");
+                    log("detected TotemTile clickEvent", clickEvent);
                     TotemZones.cyclePalette(tile.document);
                 }
             });
-
-
             // tile.mouseInteractionManager.callbacks
             // const foo = tile.mouseInteractionManager;
             // log("MIM is", foo);

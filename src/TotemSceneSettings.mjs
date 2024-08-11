@@ -47,7 +47,10 @@ export class TotemSceneSettings {
 			html.find('input[name="tzgCountHeight"]').val(),
 			'/assets/tiles/square-empty-dashed.svg',
 			'/assets/tiles/square-white.svg',
-			['#264653', '#2A9D8F', '#E9C46A', '#F4A261', '#E76F51']
+			// note there's logic for handling the "clear" value in TotemZones.cyclePalette
+			// TODO: this isn't currently working?!
+			// ['#264653', '#2A9D8F', '#E9C46A', '#F4A261', '#E76F51', 'clear']
+		['#264653', '#2A9D8F', '#E9C46A', '#F4A261', '#E76F51']
 		);
 
 		config.saveToSceneFlagsIfNecessary();

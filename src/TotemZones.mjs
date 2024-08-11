@@ -70,25 +70,30 @@ export class TotemZones {
      * @param {TileDocument} tile
      */
     static cyclePalette(tile) {
-        // const tileDoc = tile.document;
+        log ('entering cyclePalette', tile);
         if (! tile.getFlag(CONSTANTS.moduleName, CONSTANTS.totemTileFlagName)) return;
 
         const config = TotemSceneConfig.readFromSceneOrDefaults();
 
-        let x = config.palette.findIndex(x => x === tile.texture.tint);
-
-        log ("old x", x);
+        let x = config.palette.findIndex(
+            x => x.toLowerCase() === tile.texture.tint.css.toLowerCase());
+        log ("old position in palette cycle (tile) (config)", x, tile, config);
         if (x === -1) {
             x=0;
         } else {
             x++;
             if (x >= config.palette.length) x = 0;
         }
-        log ("new x", x);
 
-        // tile.document.texture.tint is a string, eg "#b73434"
-        // tile.document.alpha is a string like "0.9"
-        tile.update({texture: {tint: config.palette[x], src: config.filledTexture, alpha: 0.85}});
+        if (config.palette[x] === 'clear') { // sentinel value to take tile back to transparent
+            log('clearing tile', x, config.palette[x]);
+            tile.update({texture: {tint: {}, src: config.emptyTexture, alpha: 0.6}});
+        } else {
+            log('tinting tile', x, config.palette[x]);
+            // tile.document.texture.tint is a string, eg "#b73434"
+            // tile.document.alpha is a string like "0.9"
+            tile.update({texture: {tint: config.palette[x], src: config.filledTexture, alpha: 0.85}});
+        }
     }
 
     static tileIsManaged(tile) {
