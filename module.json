@@ -1,15 +1,32 @@
 {
-  "id": "penllawen-totem-zone-grids",
   "title": "Totem Zone Grids",
+  "id": "penllawen-totem-zone-grids",
+  "description": "Quick 'n' easy zone mapping",
+
   "version": "#{VERSION}#",
+  "url": "#{URL}#",
+  "manifest": "#{MANIFEST}#",
+  "download": "#{DOWNLOAD}#",
+  "license": "LICENSE",
+  "readme": "README.md",
+
+  "authors": [
+    {
+      "name": "PenLlawen",
+      "discord": "docg#2827",
+      "url": "https://github.com/richardgaywood"}
+  ],
+  "library": false,
+  "socket": false,
+
   "compatibility": {
     "minimum": "11",
-    "verified": "11"
+    "verified": "12"
   },
+
   "esmodules": [
     "src/init.mjs"
   ],
-  "description": "foo bar baz",
   "languages": [
     {
       "lang": "en",
@@ -17,9 +34,5 @@
       "path": "lang/en.json"
     }
   ],
-  "url": "#{URL}#",
-  "manifest": "#{MANIFEST}#",
-  "download": "#{DOWNLOAD}#",
-  "license": "LICENSE",
-  "readme": "README.md"
+
 }
